@@ -26,7 +26,7 @@
 
 
             <h3 style="margin-bottom:40px">Enter a <strong>domain name</strong> or <strong>IP address</strong> to find out which Microsoft Azure Datacenter it's hosted in</h3>
-            <div class="form-group form-group-lg">
+            <div class="form-group form-group-lg;" style="margin-bottom:40px">
                 <label for="address"  class="col-sm-2 control-label">Domain Name<br/>or IP Address</label>
                 <div class="col-sm-8">
                     <input value="azure.microsoft.com" id="address" class="form-control input-lg" type="text">
@@ -36,8 +36,10 @@
                 </div>
             </div>
 
-                            <h3 style="margin-top:40px">Results</h3>
+            <div id="results-div" style="display:none">
+            <h3>Results</h3>
             <pre id="results" style="font-size:18px; margin-bottom:25px"></pre>
+            </div>
             
             <p>
                 This application looks up the IP address of the domain name provided, and matches it against the <a href="http://www.microsoft.com/en-gb/download/details.aspx?id=41653">published list of IP address ranges</a> used by the compute services in Microsoft Azure Datacenters.
@@ -53,6 +55,8 @@
 
         <script>
         $(function(){
+
+            var first = true;
 
             var names = {
                 europewest : "West Europe",
@@ -82,6 +86,11 @@
             }
 
             function showResult(address, result){
+                if (first){
+                    $("#results-div").fadeIn();
+                    first = false;
+                }
+
                 var displayName = result;
                 if (names[result]) {
                     displayName = names[result];

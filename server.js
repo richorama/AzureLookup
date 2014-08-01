@@ -10,7 +10,6 @@ http.createServer(function(req, res){
 		fs.createReadStream("_index.html").pipe(res);
 	} else {
 		var address = req.url.split("/")[1];
-		console.log(address);
 		check(address, function(err, result){
 			res.setHeader('content-type', 'text/plain');
 			if (!result) return res.end("none");
@@ -31,7 +30,6 @@ function checkIp(ip){
 function checkDns(address, cb){
 	dns.resolve(address, function(err, addresses){
 		if (err) return cb(err);
-		console.log(addresses);
 		for (var i = 0; i < addresses.length; i++){
 			var result = checkIp(addresses[i]);
 			if (result) return cb(null, result);
