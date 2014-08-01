@@ -9,7 +9,9 @@
   "author": "Richard Astbury",
   "license": "MIT",
   "dependencies": {
-    "xml2js": "~0.4.4"
+    "xml2js": "~0.4.4",
+    "azure": "~0.9.13",
+    "uuid": "~1.4.1"
   },
   "devDependencies": {
     "xml2js": "~0.4.4"
