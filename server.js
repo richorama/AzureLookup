@@ -8,9 +8,11 @@ var azure = require('azure');
 var tableClient;
 if (process.env.storage_account && process.env.storage_key){
 	tableClient = azure.createTableService(process.env.storage_account, process.env.storage_key);	
+	/*
 	tableClient.createTableIfNotExists('azurelookup', function(error){
 	    if(error) console.log(error);
 	});
+	*/
 }
 
 
