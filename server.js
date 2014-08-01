@@ -85,7 +85,7 @@ function save(address, ip, dc){
 		ip : ip,
 		dc : dc,
 		PartitionKey : id.substr(0,10),
-		RowKey : id + "~" + uuid.v4(),
+		RowKey : id,
 	};
 	tableClient.insertEntity('azurelookup', entity, function(err){
 		if (err) console.log(err);
