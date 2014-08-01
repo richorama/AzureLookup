@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Azure Speed Test - Measure the latenecy to your nearest Microsoft Azure Data Center">
+        <meta name="author" content="Richard Astbury">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <title>Azure Datacenter Lookup</title>
+        <style>
+            .container {
+                width:970px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container" style="background:whitesmoke">
+            <div><a href="http://www.two10degrees.com/"><img src="//two10degrees.blob.core.windows.net/two10degrees.png" class="pull-right"/></a></div>
+            <h1 style="color:grey;font-size:50px">Azure Datacenter Lookup</h1>
+        </div>
+
+        <div class="container" style="margin-top:55px;"  class="form-horizontal" role="form">
+            <h3 style="margin-bottom:40px">Enter a <strong>domain name</strong> or <strong>IP address</strong> to find out which Microsoft Azure Datacenter it's hosted in</h3>
+            <div class="form-group form-group-lg">
+                <label for="address"  class="col-sm-2 control-label">Domain Name<br/>or IP Address</label>
+                <div class="col-sm-8">
+                    <input value="azure.microsoft.com" id="address" class="form-control input-lg" type="text">
+                </div>
+                <div>
+                    <a class="btn-lg btn btn-primary" id="check">Lookup</a>   
+                </div>
+            </div>
+            <h3 style="margin-top:40px">Results</h3>
+            <pre id="results" style="font-size:18px"></pre>
+            <p style="margin-top:25px">
+                This application looks up the IP address of the domain name provided, and matches it against the <a href="http://www.microsoft.com/en-gb/download/details.aspx?id=41653">published list of IP address ranges</a> used by the compute services in Microsoft Azure Datacenters.
+            </p>
+            <p>Created by <a href="https://www.twitter.com/richorama/">@richorama</a> at <a href="https://www.twitter.com/two10degrees/">@two10degrees</a>.</p>
+            <p>
+                To find your nearest datacenter, use <a href="http://azurespeedtest.azurewebsites.net/">Azure Speed Test</a>.
+            </p>
+            <p>
+                <a href="https://github.com/richorama/AzureLookup">Fork</a> on GitHub.
+            </p>
+        </div>
+
+        <script>
+        $(function(){
+
+
+            if (location.hash){
+                var address = location.hash.replace("#", "");
+                
+                $("#address").val(address);
+                $.get(address, function(result){
+                    showResult(address, result);
+                });
+            }
+
+            function showResult(address, result){
+                $("#results").prepend(address + ' => ' + result + ' (<a href="http://azurelookup.azurewebsites.net/#' + address + '" target="_blank">link</a>)\n');
+            }
+
+            function go(){
+                var address = $("#address").val();
+                $.get(address.replace("http://", "").replace("https://", ""), function(result){
+                    console.log(arguments);
+                    $("#address").val("");
+                    showResult(address, result);
+                });
+            }
+
+            $("#address").keypress(function (e) {
+                if (e.which !== 13) return;
+                go();
+            });
+
+            $("#check").click(go);
+        })();
+
+        </script>
+
+    </body>
+</html>
+
