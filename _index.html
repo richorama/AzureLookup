@@ -25,7 +25,7 @@
                         <span class="pull-right" style="margin-top:25px;" id="twitterbutton"><a href="https://twitter.com/intent/tweet?button_hashtag=AzureLookup&amp;text=Look%20up%20which%20Azure%20Datacenter%20is%20hosting%20a%20website%20with%20#AzureLookuphttp%3A%2F%2Fazurelookup.azurewebsites.net%20#AzureSpeedTest" class="btn btn-primary btn-large" data-size="large" data-related="two10degrees" data-dnt="true">Share on Twitter</a></span>
 
 
-            <h3 style="margin-bottom:40px">Enter a <strong>domain name</strong> or <strong>IP address</strong> to find out which Microsoft Azure Datacenter it's hosted in</h3>
+            <h3 style="margin-bottom:40px">Enter a <strong>domain name</strong> or <strong>IP address</strong> to find out which Microsoft Azure Datacenter it's hosted in.</h3>
             <div class="form-group form-group-lg;" style="margin-bottom:40px">
                 <label for="address"  class="col-sm-2 control-label">Domain Name<br/>or IP Address</label>
                 <div class="col-sm-8">
@@ -96,7 +96,7 @@
                     displayName = names[result];
                 }
 
-                $("#results").prepend(address + ' => ' + displayName + ' (<a href="http://azurelookup.azurewebsites.net/#' + address + '" target="_blank">link</a>)\n');
+                $("#results").prepend(address + ' => <strong>' + displayName + '</strong> (<a href="http://azurelookup.azurewebsites.net/#' + address + '" target="_blank">link</a>)\n');
             }
 
             function go(){
