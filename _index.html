@@ -101,7 +101,8 @@
 
             function go(){
                 var address = $("#address").val();
-                $.get(address.replace("http://", "").replace("https://", ""), function(result){
+                if (address.trim() === "") return;
+                $.get(address.replace("http://", "").replace("https://", "").trim(), function(result){
                     console.log(arguments);
                     $("#address").val("");
                     showResult(address, result);
