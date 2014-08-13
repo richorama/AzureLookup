@@ -25,7 +25,7 @@
                         <span class="pull-right" style="margin-top:25px;" id="twitterbutton"><a href="https://twitter.com/intent/tweet?button_hashtag=AzureLookup&amp;text=Look%20up%20which%20Azure%20Datacenter%20is%20hosting%20a%20website%20with%20http%3A%2F%2Fazurelookup.azurewebsites.net%20#AzureLookup" class="btn btn-primary btn-large" data-size="large" data-related="two10degrees" data-dnt="true">Share on Twitter</a></span>
 
 
-            <h3 style="margin-bottom:40px">Enter a <strong>domain name</strong> or <strong>IP address</strong> to find out which Microsoft Azure Datacenter it's hosted in.</h3>
+            <h3 style="margin-bottom:40px">Enter a <strong>domain name</strong> or <strong>IP address</strong> to find out which cloud it's hosted in.</h3>
             <div class="form-group form-group-lg;" style="margin-bottom:40px">
                 <label for="address"  class="col-sm-2 control-label">Domain Name<br/>or IP Address</label>
                 <div class="col-sm-8">
@@ -42,11 +42,11 @@
             </div>
             
             <p>
-                This application looks up the IP address of the domain name provided, and matches it against the <a href="http://www.microsoft.com/en-gb/download/details.aspx?id=41653">published list of IP address ranges</a> used by the compute services in Microsoft Azure Datacenters.
+                This application looks up the IP address of the domain name provided, and matches it against the published list of IP address ranges</a> used by the compute services in <a href="http://www.microsoft.com/en-gb/download/details.aspx?id=41653">Microsoft Azure</a> and <a href="https://forums.aws.amazon.com/ann.jspa?annID=1701">Amazon</a> Datacenters.
             </p>
             <p>Created by <a href="https://www.twitter.com/richorama/">@richorama</a> at <a href="https://www.twitter.com/two10degrees/">@two10degrees</a>.</p>
             <p>
-                To find your nearest datacenter, use <a href="http://azurespeedtest.azurewebsites.net/">Azure Speed Test</a>.
+                To find your nearest Azure datacenter, use <a href="http://azurespeedtest.azurewebsites.net/">Azure Speed Test</a>.
             </p>
             <p>
                 <a href="https://github.com/richorama/AzureLookup">Fork</a> on GitHub.
@@ -58,23 +58,7 @@
 
             var first = true;
 
-            var names = {
-                europewest : "Europe West",
-                useast : "US East",
-                useast2 : "US East 2",
-                uswest :  "US West",
-                usnorth : "US North Central",
-                europenorth : "Europe North",
-                uscentral : "US Central",
-                asiaeast : "Asia Pacific East",
-                asiasoutheast : "Asia Pacific Southeast",
-                ussouth : "US South Central",
-                japanwest : "Japan West",
-                japaneast : "Japan East",
-                brazilsouth : "Brazil South",
-                none : "Not hosted in Azure"
-            };
-
+            
 
             if (location.hash){
                 var address = location.hash.replace("#", "");
@@ -92,9 +76,6 @@
                 }
 
                 var displayName = result;
-                if (names[result]) {
-                    displayName = names[result];
-                }
 
                 $("#results").prepend(address + ' => <strong>' + displayName + '</strong> (<a href="http://azurelookup.azurewebsites.net/#' + address + '" target="_blank">link</a>)\n');
             }
