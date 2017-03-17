@@ -17,7 +17,22 @@ var names = {
     ussouth : "US South Central",
     japanwest : "Japan West",
     japaneast : "Japan East",
-    brazilsouth : "Brazil South"
+    brazilsouth : "Brazil South",
+    australiaeast : "Australia East",
+    australiasoutheast : "Australia Southeast",
+    indiacentral : "India Central",
+    indiawest : "India West",
+    indiasouth : "India South",
+    canadaeast : "Canada East",
+    canadacentral : "Canada Central",
+    uswest2 : "US West 2",
+    uswestcentral : "US West Central",
+    ukwest : "UK West",
+    uksouth : "UK South",
+    uscentraleuap : "US Central EUAP",
+    useast2euap : "US East 2 EUAP",
+    koreasouth : "Korea South",
+    koreacentral : "Korea Central"
 };
 
 xml2js.parseString(xml, function(err, json){
